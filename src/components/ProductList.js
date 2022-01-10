@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React, { useEffect } from "react";
 // Components
 import ProductItem from "./ProductItem";
 import SearchBar from "./SearchBar";
@@ -6,8 +7,10 @@ import SearchBar from "./SearchBar";
 import products from "../products";
 
 const ProductList = () => {
+  useEffect(() => {
+    document.title = "Products List";
+  }, []);
   const [query, setQuery] = useState("");
-
   const productList = products
     .filter((product) =>
       product.name.toLowerCase().includes(query.toLowerCase())
